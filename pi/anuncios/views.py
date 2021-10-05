@@ -8,3 +8,16 @@ def produtos(request):
 
 def servicos(request):
     return render(request, 'anuncios/servicos.html')
+
+def listaProdutos(request):
+    return render(request, 'anuncios/lista_produtos.html')
+
+def listaServicos(request):
+    return render(request, 'anuncios/lista_servicos.html')
+
+def detalhesProduto(request):
+    return render(request, 'anuncios/detalhes_produto.html')
+
+def detalhesServico(request):
+    return render(request, 'anuncios/detalhes_servico.html')
+
