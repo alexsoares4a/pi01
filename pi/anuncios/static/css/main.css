@@ -77,7 +77,19 @@ h1 {
   color: #53555c;
   font-family: 'Open Sans', sans-serif;
   font-weight: 800;
+  font-size: clamp(0.9em, 1em + 1vw, 0.8em);
 }
+h1m{
+  color: #53555c;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 800;
+  font-size: clamp(0.9em, 1em + 1vw, 0.8em);
+  text-align: center;
+
+}
+
+
+
 h2 {
   color: #53555c;
   font-family: 'Open Sans', sans-serif;
@@ -96,6 +108,13 @@ h4 {
   font-family: 'Open Sans', sans-serif;
   color: #53555c;
   margin-bottom: 10px;
+}
+
+
+h5 {
+  font-family: 'Open Sans', sans-serif;
+  color: #53555c;
+  font-size: 1em;
 }
 a {
   color: #4f8db3;
@@ -355,6 +374,13 @@ a:hover {
     background-clip: padding-box;
     z-index: 4;
   }
+  .novidade-texto img {
+    max-width: 100%;
+    margin: 30px auto;
+    display: block;
+    max-height: 100px;
+  }
+}
 }
 /*--------------------------------------------------------------------------
 +	Contact Us Style
@@ -857,6 +883,10 @@ span.color-red {
 span.text-color-orange {
   color: #DA1111;
 }
+
+/*h1.title_home {
+  font-size: 0.9em;
+}*/
 /*--------------------------------------------------------------------------
 +	Product Details Page Style
 --------------------------------------------------------------------------*/
@@ -2370,7 +2400,8 @@ span.text-color-orange {
 --------------------------------------------------------------------------*/
 .mainmenu li.logo-wrapper a {
   border-right: 1px solid #E8E8E8;
-  padding-left: 0;
+  padding-left: 1.2em;
+  padding-right: 1.2em;
   padding-top: 0;
   padding-bottom: 0;
 }
@@ -2671,3 +2702,21 @@ span.text-color-orange {
 .dropdown.open a.dropdown-toggle .caret {
   border-top: 4px solid #FFF;
 }
+
+
+.task-list {
+  padding-left: 0;
+}
+
+.task-item {
+  list-style: none;
+  font-size: 20px;
+  height: 50px;
+  padding: 0 15px;
+  padding-top: 10px;
+  border-bottom: 1px dashed #CCC;
+}
+
+.task-item.done {
+  background-color: #CCC;
+}  

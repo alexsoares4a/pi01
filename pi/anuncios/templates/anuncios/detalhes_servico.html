@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Flex Mogi - Anúncios{% endblock %}
-
+{% block menu_servicos %}active{% endblock %}
 {% block content %}
 
         <div class="section">
@@ -11,25 +10,66 @@
 					<div class="col-sm-6">
 						<div class="portfolio-item">
 							<div class="portfolio-image">
-								<a href="#"><img src="{% static 'img/portfolio2.jpg' %}" alt="Project Name"></a>
+								<a href="#"><img src="{{servico.imagem.url}}" alt="Project Name"></a>
 							</div>
 						</div>
 					</div>
 					<!-- End Image Column -->
 					<!-- Project Info Column -->
 					<div class="portfolio-item-description col-sm-6">
-						<h3>Project Description</h3>
+						<h3>{{servico.tx_titulo_servico}}</h3>                        
+                        <br />
+						<p><strong>Descrição</strong></p>
 						<p>
-							Mauris auctor blandit neque eu cursus. Nunc vel commodo dui, sed tempus mi. Fusce eleifend, orci ut elementum porta, mauris leo porta purus.
+							{{servico.dc_servico}}
 						</p>
-						<p>
-							Etiam aliquet tempor est nec pharetra. Etiam interdum tincidunt orci vitae elementum. Donec sollicitudin quis risus sit amet lobortis. Fusce sed tincidunt nisl.
-						</p>
-						<ul class="no-list-style">
-							<li><b>Client:</b> Some Client LTD</li>
-							<li><b>Date:</b> 01, September 2012 - 23, February 2013</li>
-							<li><b>Technologies:</b> HTML5, CSS3, jQuery, PHP, MySQL</li>
-							<li class="portfolio-visit-btn"><a href="#" class="btn">Visit Website</a></li>
+						<br>
+                        <ul class="no-list-style">
+							<li><b>Anunciante:</b> {{servico.usuario}}</li>
+                            <i class="fas fa-search-plus"></i>
+                            <a href="/anunciante_servicos/{{servico.usuario}}">Veja outros servicos deste anunciante</a>
+                            <li>&nbsp;</li>
+							<li><b>Contato(s):</b></li>
+                            {% for contato in contatos %}
+                                <li>
+                                    {% ifequal contato.tp_contato "Telefone" %}        
+                                        <i class="fas fa-phone fa"></i> {{contato.tx_contato}}
+                                    {% endifequal %}
+                                </li>
+                                <li>
+                                    {% ifequal contato.tp_contato "WhatsApp" %}        
+                                        <a href="#void" onclick="enviarMensagem({{contato.tx_contato}},'*[Negocia aí, vizinho!]*\n\nOlá, Tudo bem?\n\nVi seu anúncio e fiquei interessado no serviço: *{{servico.tx_titulo_servico}}*.\n\n*Link do anúncio:*\n{{ request.scheme }}://{{ request.get_host }}{{ request.get_full_path }}\n\nVamos negociar?')">
+                                            <i class="fab fa-whatsapp-square" style="font-size: 1.5em;"></i>
+                                          {{contato.tx_contato}}</a>
+                                    {% endifequal %}
+                                </li>
+                                <li>
+                                    {% ifequal contato.tp_contato "Telegram" %}        
+                                        <i class="fab fa-telegram fa"></i> {{contato.tx_contato}}
+                                    {% endifequal %}
+                                </li>
+                                <li>
+                                    {% ifequal contato.tp_contato "E-Mail" %}        
+                                        <i class="fas fa-envelope fa"></i> 
+                                        <a href="mailto:{{contato.tx_contato}}">{{contato.tx_contato}}</a>
+                                    {% endifequal %}
+                                </li>
+                                <li>
+                                    {% ifequal contato.tp_contato "Instagram" %}        
+                                        <i class="fab fa-instagram fa"></i> {{contato.tx_contato}}
+                                    {% endifequal %}
+                                </li>
+                                <li>
+                                    {% ifequal contato.tp_contato "Facebook" %}        
+                                        <i class="fab fa-facebook fa"></i> {{contato.tx_contato}}
+                                    {% endifequal %}
+                                </li>
+                                <li>
+                                    {% ifequal contato.tp_contato "Twitter" %}        
+                                        <i class="fab fa-twitter fa"></i> {{contato.tx_contato}}
+                                    {% endifequal %}
+                                </li>
+                           {% endfor %}
 						</ul>
 					</div>
                 </div>
